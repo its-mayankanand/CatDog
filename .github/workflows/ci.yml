@@ -11,7 +11,8 @@ jobs:
 
     env:
       PYTHONPATH: .                                 # so `from app.main import app` works
-      DATABASE_URL: sqlite:///./ci.db               # lightweight DB for testing
+                    
+                    
 
     steps:
       - name: Checkout code
