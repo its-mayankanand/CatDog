@@ -6,7 +6,8 @@ __pycache__/
 
 # Ignore virtual environment 
 
-venv/
+
+*env/
 
 # VS Code
 

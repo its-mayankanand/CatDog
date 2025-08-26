@@ -5,5 +5,3 @@ sqlalchemy
 python-dotenv
 requests
 pytest
-
-httpx
