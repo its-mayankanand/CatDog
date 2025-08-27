@@ -2,6 +2,7 @@
 from sqlalchemy import Column, Integer, String
 from .db import Base
 
+
 class CatBreed(Base):
     __tablename__ = "cat_breeds"
 

@@ -2,6 +2,7 @@
 from pydantic import BaseModel, Field, ConfigDict
 from typing import Optional
 
+
 class BreedBase(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
@@ -13,8 +14,10 @@ class BreedBase(BaseModel):
     coat_pattern: Optional[str] = None
     image: Optional[str] = None
 
+
 class BreedCreate(BreedBase):
     pass
+
 
 class BreedUpdate(BaseModel):
     model_config = ConfigDict(from_attributes=True)
@@ -26,6 +29,7 @@ class BreedUpdate(BaseModel):
     coat_type_length: Optional[str] = None
     coat_pattern: Optional[str] = None
     image: Optional[str] = None
+
 
 class BreedOut(BreedBase):
     id: int

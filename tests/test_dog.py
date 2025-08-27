@@ -5,18 +5,20 @@ from unittest.mock import MagicMock
 # 1) Prevent metadata.create_all
 with patch("app.main.Base.metadata.create_all", lambda *a, **k: None):
     from app.main import app
+
     # 2) Override get_db just in case future routes touch DB
     from app.db import get_db
+
     def override_get_db():
         yield MagicMock()
+
     app.dependency_overrides[get_db] = override_get_db
 
 client = TestClient(app)
 
 # Mock response for requests.get
-mock_dog_response = [
-    {"url": "https://example.com/fake-dog.jpg"}
-]
+mock_dog_response = [{"url": "https://example.com/fake-dog.jpg"}]
+
 
 def test_get_dog():
     with patch("app.api.dog.requests.get") as mock_get:

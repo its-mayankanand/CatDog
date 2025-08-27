@@ -1,16 +1,21 @@
 from unittest.mock import patch
 from fastapi.testclient import TestClient
+from unittest.mock import MagicMock
 
 # 1) Prevent metadata.create_all
 with patch("app.main.Base.metadata.create_all", lambda *a, **k: None):
     from app.main import app
+
     # 2) Override get_db to avoid real DB session
     from app.db import get_db
+
     def override_get_db():
         yield MagicMock()
+
     app.dependency_overrides[get_db] = override_get_db
 
 client = TestClient(app)
+
 
 def test_list_breeds():
     mock_breeds = [
@@ -34,7 +39,6 @@ def test_list_breeds():
             "coat_pattern": "Colorpoint",
             "image": "https://example.com/siamese.jpg",
         },
-        
     ]
 
     with patch("app.api.cat.crud.list_breeds", return_value=mock_breeds):
