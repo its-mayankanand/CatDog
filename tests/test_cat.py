@@ -1,4 +1,5 @@
 # this is unit test file for test_cat file 
+# unit tests are the first method of testing 
 from unittest.mock import patch
 from fastapi.testclient import TestClient
 from unittest.mock import MagicMock
