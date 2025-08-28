@@ -64,5 +64,8 @@ jobs:
         with:
           context: .
           push: true
-          tags: itsmayankanand/catdog:latest
-          tags: itsmayankanand/catdog:${{ github.sha }} 
+          tags: |
+            itsmayankanand/catdog:latest
+            itsmayankanand/catdog:${{ github.sha }} 
+
+            
